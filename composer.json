@@ -1,0 +1,23 @@
+{
+    "name": "branchonline/yii2-lightbox",
+    "description": "Lightbox widget for Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "module"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Jap Mul",
+            "email": "jap@branchonline.nl"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/lightbox2": "2.7.1",
+    },
+    "autoload": {
+        "psr-4": {
+            "branchonline\\lightbox\\": "src/"
+        }
+    }
+}
+
