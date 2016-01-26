@@ -26,6 +26,8 @@ Usage
 Once the extension is installed, simply add widget to your page as follows:
 
 ```php
+use branchonline\lightbox\Lightbox;
+
 echo Lightbox::widget([
     'files' => [
         [
