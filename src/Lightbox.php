@@ -3,19 +3,20 @@
 namespace branchonline\lightbox;
 
 use yii\base\Widget;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 class Lightbox extends Widget {
 
-    /**
-     * @var array containing the attributes for the images
-     */
+    /** @var array Contains the attributes for the images. */
     public $files = [];
 
+    /** @inheritdoc */
     public function init() {
         LightboxAsset::register($this->getView());
     }
 
+    /** @inheritdoc */
     public function run() {
         $html = '';
         foreach ($this->files as $file) {
@@ -33,8 +34,12 @@ class Lightbox extends Widget {
                 $attributes['data-lightbox'] = 'image-' . uniqid();
             }
 
-            $img = Html::img($file['thumb']);
-            $a = Html::a($img, $file['original'], $attributes);
+            $thumbOptions = isset($file['thumbOptions']) ? $file['thumbOptions'] : [];
+            $linkOptions  = isset($file['linkOptions']) ? $file['linkOptions'] : [];
+
+            $img = Html::img($file['thumb'], $thumbOptions);
+            $a   = Html::a($img, $file['original'], ArrayHelper::merge($attributes, $linkOptions));
+
             $html .= $a;
         }
         return $html;
